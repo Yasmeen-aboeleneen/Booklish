@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:free_books/Core/Utils/styles.dart';
 import 'package:free_books/Features/Home/presentation/views/Widgets/BooksListView.dart';
 import 'package:free_books/Features/Home/presentation/views/Widgets/MostPopular_ListView.dart';
 
+import 'BooksListViewBlocBuilder.dart';
 import 'CustomAppBar.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -20,7 +22,7 @@ class HomeScreenBody extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                BooksListView(),
+                BooksListViewBlocBuilder(),
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
@@ -42,3 +44,5 @@ class HomeScreenBody extends StatelessWidget {
     );
   }
 }
+
+ 

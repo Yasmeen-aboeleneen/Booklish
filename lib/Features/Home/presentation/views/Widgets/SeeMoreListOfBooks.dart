@@ -23,6 +23,6 @@ class _ListOfSeeMoreBooksState extends State<ListOfSeeMoreBooks> {
             );
           }),
     );
-    ;
+    
   }
 }

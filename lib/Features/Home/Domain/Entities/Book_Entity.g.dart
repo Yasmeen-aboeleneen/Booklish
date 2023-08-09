@@ -1,4 +1,4 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+ // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'Book_Entity.dart';
 
@@ -17,12 +17,12 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return BookEntity(
-      bookId: fields[0] as String?,
       image: fields[1] as String?,
-      title: fields[2] as String?,
-      price: fields[3] as num?,
-      authorName: fields[4] as String?,
+      title: fields[2] as String,
+      authorName: fields[3] as String?,
+      price: fields[4] as num?,
       rating: fields[5] as num?,
+      bookId: fields[0] as String,
     );
   }
 
@@ -37,9 +37,9 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       ..writeByte(2)
       ..write(obj.title)
       ..writeByte(3)
-      ..write(obj.price)
-      ..writeByte(4)
       ..write(obj.authorName)
+      ..writeByte(4)
+      ..write(obj.price)
       ..writeByte(5)
       ..write(obj.rating);
   }

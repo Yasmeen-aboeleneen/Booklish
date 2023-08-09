@@ -38,7 +38,7 @@ class FreeBooks extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) {
           return FeaturedBooksCubit(
-              FetchFeaturedBooksUseCase(getIt.get<HomeRepoImplementation>()));
+              FetchFeaturedBooksUseCase(getIt.get<HomeRepoImplementation>()))..fetchFeaturedBooks();
         }),
         BlocProvider(create: (context) {
           return fetchMostPopularBooksCubit(
