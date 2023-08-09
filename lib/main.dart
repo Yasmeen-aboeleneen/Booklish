@@ -42,7 +42,7 @@ class FreeBooks extends StatelessWidget {
         }),
         BlocProvider(create: (context) {
           return fetchMostPopularBooksCubit(
-              FetchMostPopularUseCase(getIt.get<HomeRepoImplementation>()));
+              FetchMostPopularUseCase(getIt.get<HomeRepoImplementation>()))..fetchMostPopularBooks();
         })
       ],
       child: MaterialApp.router(

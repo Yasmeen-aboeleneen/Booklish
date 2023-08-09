@@ -10,9 +10,9 @@ class fetchMostPopularBooksCubit extends Cubit<FetchMostPopularBooksState> {
 
   final FetchMostPopularUseCase fetchMostPopularBooksUseCase;
 
-  Future<void> fetchMostPopularBooks() async {
+  Future<void> fetchMostPopularBooks({int pageNumber=0}) async {
     emit(FetchMostPopularBooksLoading());
-    var result = await fetchMostPopularBooksUseCase.Call();
+    var result = await fetchMostPopularBooksUseCase.Call(pageNumber);
     result.fold((Failure) {
       emit(FetchMostPopularBooksFailure(Failure.messege));
     }, (books) {

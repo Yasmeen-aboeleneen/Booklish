@@ -19,7 +19,7 @@ class _ListOfSeeMoreBooksState extends State<ListOfSeeMoreBooks> {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: CustomItemOfListView(),
+              child: CustomItemOfListView(image: '',),
             );
           }),
     );

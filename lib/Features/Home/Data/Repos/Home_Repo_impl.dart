@@ -14,7 +14,7 @@ class HomeRepoImplementation extends HomeRepo {
       {required this.homeLocalDataSource, required this.homeRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<BookEntity>>> FetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> FetchFeaturedBooks({int pageNumber=0}) async {
     try {
       var booksList = await homeLocalDataSource.FetchFeaturedBooks();
       if (booksList.isNotEmpty) {
@@ -31,7 +31,7 @@ class HomeRepoImplementation extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> FetchMostPopularBooks() async {
+  Future<Either<Failure, List<BookEntity>>> FetchMostPopularBooks({int pageNumber=0}) async {
     try {
       List<BookEntity> books;
 

@@ -6,8 +6,8 @@ import '../../../../constants.dart';
 import '../../Domain/Entities/Book_Entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> FetchFeaturedBooks();
-  Future<List<BookEntity>> FetchMostPopularBooks();
+  Future<List<BookEntity>> FetchFeaturedBooks({int pageNumber=0});
+  Future<List<BookEntity>> FetchMostPopularBooks({int pageNumber=0});
 }
 
 class HomeRemoteDataSourceImplementation extends HomeRemoteDataSource {
@@ -15,9 +15,9 @@ class HomeRemoteDataSourceImplementation extends HomeRemoteDataSource {
 
   HomeRemoteDataSourceImplementation(this.apiService);
   @override
-  Future<List<BookEntity>> FetchFeaturedBooks() async {
+  Future<List<BookEntity>> FetchFeaturedBooks({int pageNumber=0}) async {
     var Data = await apiService.get(
-        endPoint: 'volumes?Filtering=free-ebooks&q= All books');
+        endPoint: 'volumes?Filtering=free-ebooks&q=AllBooks&startIndex=${pageNumber * 10}');
 
     List<BookEntity> books = getBooksList(Data);
     SaveBooksData(books, Kfeaturedbooks);
@@ -25,10 +25,10 @@ class HomeRemoteDataSourceImplementation extends HomeRemoteDataSource {
   }
 
   @override
-  Future<List<BookEntity>> FetchMostPopularBooks() async {
+  Future<List<BookEntity>> FetchMostPopularBooks({int pageNumber=0}) async {
     var Data = await apiService.get(
         endPoint:
-            'volumes?Filtering=free-ebooks&Sorting=newest &q= All books ');
+            'volumes?Filtering=free-ebooks&q=AllBooks&startIndex=${pageNumber *10}&Sorting=newest');
 
     List<BookEntity> books = getBooksList(Data);
     SaveBooksData(books, KmostPopularbooks);
@@ -39,7 +39,7 @@ class HomeRemoteDataSourceImplementation extends HomeRemoteDataSource {
 List<BookEntity> getBooksList(Map<String, dynamic> Data) {
   List<BookEntity> books = [];
   for (var bookMap in Data['items']) {
-    books.add(BookModel.fromJson(bookMap) as BookEntity);
+    books.add(BookModel.fromJson(bookMap));
   }
   return books;
 }
